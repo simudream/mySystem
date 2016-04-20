@@ -1,0 +1,16 @@
+Jasper works much better when the keyword/phrase is 3-4 syllables as recommended in the Phonetisaurus documentation. I have found that the default 2 syllable name "Jasper" is simply too short to be reliable, the 4 syllables of "Hello Jasper" is much better (you could try something else).
+
+In ~/.jasper/profile.yml, try this:
+   keyword: "Hello Jasper"
+
+This will over-ride the default keyword "Jasper" in application.py.
+
+By making this change Jasper responds properly the first time, so long as it's listening for the keyword, ie. watch for the output:
+    INFO:jasper.mic:Waiting for keyword 'Hello Jasper'....
+
+In the same vein, the plugin phrases are generally too short, again longer is better. This is why the following plugins are so keen: 
+- Joke: instead of "JOKE", try "TELL ME A JOKE"
+- News: instead of "NEWS" try "READ THE NEWS", and delete "YES" and "NO".
+- Clock: instead of "TIME" try "WHAT IS THE TIME".
+With these changes I've found that Jasper is much better ;-)
+

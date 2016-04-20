@@ -1,0 +1,28 @@
+This repository will document how I setup my system. There is a backlog...
+
+Not in order:
+
+- RPi3 Jessie
+- apt-get script
+- Win32 Disk Imager
+- rpi-clone
+- TightVNC
+- PulseAudio
+- Phonetsaurus
+- Flite
+- Bluetooth (A2DP profile for audio)
+- CMU Sphinx (PocketSphinx 5 pre-alpha & SphinixBase)
+- PyAudio
+- PIP
+- Jasper-dev
+- Hidden Markov Model (hmm) hub4wsj_sc_8k
+- GitHub
+- GPG
+
+- ESPduino
+
+Future:
+- Domoticz
+- mySensors
+- nRF24L01+
+- etc etc
