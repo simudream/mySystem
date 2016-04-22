@@ -1,0 +1,92 @@
+This is how I got Jasper working with PocketSphinx 5 pre-Alpha.
+
+The following description is very short, only giving basic details based on a great deal of Googling. 
+You cannot simply follow these instructions, but instead you need to check what you’re doing at each step. 
+Good luck!
+
+Note: this description starts with the master Jasper branch, then part way through it switches to Jasper-dev. 
+It's just the way it went for me.
+
+When running ./jasper.py, I got:
+
+    File "/usr/lib/python2.7/dist-packages/pip/download.py", line 25, in <module>
+        from requests.compat import IncompleteRead
+    ImportError: cannot import name IncompleteRead
+
+I actually fixed this by doing:
+
+    sudo easy_install --upgrade pip
+
+    However, you should read this:
+        http://stackoverflow.com/questions/27341064/how-do-i-fix-importerror-cannot-import-name-incompleteread/27341847#27341847 
+        ie. Beware that it’s not so simple, however I didn’t do the following recommended action: 
+                apt-get remove python-pip.
+
+Having fixed that ./Jasper.py then gave:
+
+    File "/home/pi/jasper/jasper/client/mic.py", line 9, in <module>
+        import pyaudio
+    ImportError: No module named pyaudio
+
+Which I fixed with:
+
+    sudo apt-get install python-pyaudio
+
+Having fixed that ./Jasper.py then gave:
+
+    '/usr/local/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k' does not exist! 
+    Please make sure that you have set the correct hmm_dir in your profile.
+
+I found the Hidden Markov Model (HMM) here:
+
+    https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/Archive/US%20English%20HUB4WSJ%20Acoustic%20Model/
+
+Having downloaded and extracted the HMM:
+
+    sudo mv hub4wsj_sc_8k /usr/local/share/pocketsphinx/modelhmm/en-us
+
+Edit the file ~/.jasper/profile.yml, to contain the line:
+
+    hmm_dir: '/usr/local/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k'
+
+Having fixed that ./Jasper.py then gave:
+
+    TypeError: __init__() got an unexpected keyword argument 'hmm'
+
+At this point I realised I needed jasper-dev, 
+see https://github.com/jasperproject/jasper-client/issues/343
+
+         "How to implement PocketSphinx 5prealpha in Jasper #343"
+         “Jasper only supports PocketSphinx 0.8, but I think there is a fork working on implementing 5prealpha support.”
+         "Pocketsphinx 5 prealpha support was added in commit f02a61e. It currently resides in the experimental jasper-dev branch."
+
+Hence (with suitable backup etc - rpi-clone is great!):
+
+    git clone -b jasper-dev --single-branch https://github.com/jasperproject/jasper-client.git
+
+    cd jasper-client
+    ./setup.py build
+    sudo ./setup.py install
+
+Having fixed that ./Jasper.py then gave:
+
+    File "/home/pi/jasper/jasper-client/jasper/plugin.py", line 5, in <module>
+        import mad
+    ImportError: No module named mad
+
+Fixing the ‘mad’ problem requires:
+
+    sudo apt-get install mpg123
+    sudo apt-get install mpg321
+    sudo apt-get install python-pymad
+
+At this point ./Jasper.py worked, however I very strongly suggest choosing a 4 syllable keyword, 
+ie. Edit the file ~/.jasper/profile.yml, and add the line:
+
+    keyword: 'Hello Jasper'
+
+After this ./Jasper.py then behaved reasonably, though I suggest changing the plugins to have longer key phrases.
+ie. see https://github.com/GeoBeBee/mySystem/blob/master/Jasper_keywords.txt
+
+Happy to receive feedback, hope it works for you ;-)
+
