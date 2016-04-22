@@ -1,4 +1,4 @@
-This is how I got Jasper working with PocketSphinx 5 pre-Alpha.
+This is how I got Jasper working on a Raspberry Pi 3 running Raspbian Jessie, with PocketSphinx 5 pre-Alpha.
 
 The following description is very short, only giving basic details based on a great deal of Googling. 
 You cannot simply follow these instructions, but instead you need to check what you’re doing at each step. 
@@ -6,6 +6,10 @@ Good luck!
 
 Note: this description starts with the master Jasper branch, then part way through it switches to Jasper-dev. 
 It's just the way it went for me.
+
+I completed the installation as described here:
+
+    https://jasperproject.github.io/
 
 When running ./jasper.py, I got:
 
