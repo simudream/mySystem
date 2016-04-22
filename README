@@ -2,7 +2,7 @@ This repository will document how I setup my system. There is a backlog...
 
 Not in order:
 
-- RPi3 Jessie
+- RPi3 Raspbian Jessie
 - apt-get script
 - Win32 Disk Imager
 - rpi-clone
