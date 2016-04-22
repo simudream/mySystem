@@ -8,10 +8,11 @@ Not in order:
 - rpi-clone
 - TightVNC
 - PulseAudio
-- Phonetsaurus
-- Flite
+- Bluez
 - Bluetooth (A2DP profile for audio)
 - CMU Sphinx (PocketSphinx 5 pre-alpha & SphinixBase)
+- Phonetsaurus
+- Flite
 - PyAudio
 - PIP
 - Jasper-dev
