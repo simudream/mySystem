@@ -1,0 +1,16 @@
+GitHub.com runs 'continuous-integration/travis-ci/pr — The Travis CI build' when you do 'git push'.
+
+It's best to run this yourself before doing the 'git push'.
+
+See https://flake8.readthedocs.org/en/latest/#
+
+Install flake8:
+    sudo pip install flake8 
+
+Go to your jasper-client directory:
+    cd ....myJasper.git/jasper-client 
+
+Run the tests:
+    flake8 setup.py jasper tests
+    
+If there are no errors then 'git push'! :-)
